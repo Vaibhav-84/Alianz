@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "362210523665",
+    "project_id": "social-media-e18a4",
+    "storage_bucket": "social-media-e18a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362210523665:android:1cab288d45d28d2979cfb0",
+        "android_client_info": {
+          "package_name": "com.example.zero_hunger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "362210523665-j5ar8so0t14fdrab50fmrodtr0cf5tmr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbNaHqOYaLW2g-tXwPBmQDSPcHqw6P5-A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "362210523665-j5ar8so0t14fdrab50fmrodtr0cf5tmr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
