@@ -274,14 +274,8 @@ class _DisplayFeedState extends State<DisplayFeed> {
     if (type == 'Donation') {
       color = Colors.red;
     }
-    if (type == 'Volunteer') {
+    if (type == 'Request') {
       color = Colors.orange;
-    }
-    if (type == 'Want To Donate') {
-      color = Colors.green;
-    }
-    if (type == 'Want To Help') {
-      color = Colors.yellow;
     }
     return color;
   }

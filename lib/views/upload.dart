@@ -113,15 +113,7 @@ class _UploadState extends State<Upload> {
                     SizedBox(
                       width: 10,
                     ),
-                    _buildContactType('Volunteer'),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    _buildContactType('Want To Donate'),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    _buildContactType('Want To Help'),
+                    _buildContactType('Request'),
                     SizedBox(
                       width: 10,
                     ),
