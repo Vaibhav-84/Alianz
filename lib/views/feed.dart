@@ -29,7 +29,7 @@ class _DisplayFeedState extends State<DisplayFeed> {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(10),
-      height: 150,
+      height: 200,
       color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +38,7 @@ class _DisplayFeedState extends State<DisplayFeed> {
           Row(
             children: [
               Icon(
-                Icons.person,
+                Icons.account_circle,
                 color: Theme.of(context).primaryColor,
                 size: 30,
               ),
@@ -54,6 +54,35 @@ class _DisplayFeedState extends State<DisplayFeed> {
                 ),
               ),
             ],
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Flexible(
+            child: Row(
+              children: [
+               Text('Description: ',
+               style: TextStyle(
+                    fontSize: 20,
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+               ),
+                SizedBox(
+                  width: 6,
+                ),
+                Flexible(
+                  child: Text(
+                    contact['description'],
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.purple,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           SizedBox(
             height: 30,
@@ -246,13 +275,13 @@ class _DisplayFeedState extends State<DisplayFeed> {
       color = Colors.red;
     }
     if (type == 'Volunteer') {
-      color = Colors.red;
+      color = Colors.orange;
     }
     if (type == 'Want To Donate') {
       color = Colors.green;
     }
     if (type == 'Want To Help') {
-      color = Colors.green;
+      color = Colors.yellow;
     }
     return color;
   }

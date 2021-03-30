@@ -8,7 +8,7 @@ class Upload extends StatefulWidget {
 }
 
 class _UploadState extends State<Upload> {
-  TextEditingController _nameController, _numberController;
+  TextEditingController _nameController, _numberController,_desController;
   String _typeSelected = '';
   DatabaseReference _ref;
   @override
@@ -16,6 +16,7 @@ class _UploadState extends State<Upload> {
     super.initState();
     _nameController = TextEditingController();
     _numberController = TextEditingController();
+    _desController = TextEditingController();
     _ref = FirebaseDatabase.instance.reference().child('Posts');
   }
 
@@ -66,12 +67,14 @@ class _UploadState extends State<Upload> {
                     fillColor: Colors.white,
                     filled: true,
                     contentPadding: EdgeInsets.all(15),
-                  )),
+                    border: OutlineInputBorder(),
+                  ),
+                  ),
               SizedBox(height: 15),
               TextFormField(
                   controller: _numberController,
                   decoration: InputDecoration(
-                    hintText: 'Enter Nunber',
+                    hintText: 'Enter Number',
                     prefixIcon: Icon(
                       Icons.phone_android,
                       size: 30,
@@ -79,7 +82,25 @@ class _UploadState extends State<Upload> {
                     fillColor: Colors.white,
                     filled: true,
                     contentPadding: EdgeInsets.all(15),
-                  )),
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.number,
+                  ),
+              SizedBox(
+                height: 15,
+              ),
+              TextFormField(
+                  controller: _desController,
+                  decoration: InputDecoration(
+                    hintText: 'Detailed Description',
+                    labelText: "Description",
+                    fillColor: Colors.white,
+                    filled: true,
+                    contentPadding: EdgeInsets.all(15),
+                    border: OutlineInputBorder(),
+                  ),
+                  maxLines: 3,
+                  ),
               SizedBox(
                 height: 15,
               ),
@@ -153,10 +174,12 @@ class _UploadState extends State<Upload> {
   void saveContact() {
     String name = _nameController.text;
     String number = _numberController.text;
+    String description = _desController.text;
 
     Map<String, String> contact = {
       'name': name,
       'number': number,
+      'description': description,
       'type': _typeSelected,
     };
 
