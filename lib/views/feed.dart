@@ -127,7 +127,36 @@ class _DisplayFeedState extends State<DisplayFeed> {
            ),
       
           SizedBox(
-            height: 30,
+            height: 5,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.location_pin,
+                  color: Colors.red[300],
+                  size: 25,
+                ),
+                SizedBox(
+                  width: 6,
+                ),
+                Text(
+                  contact['location'],
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 15,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
