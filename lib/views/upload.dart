@@ -11,9 +11,12 @@ class Upload extends StatefulWidget {
 }
 
 class _UploadState extends State<Upload> {
-  TextEditingController _nameController, _numberController, _desController,_locController;
+  TextEditingController _nameController,
+      _numberController,
+      _desController,
+      _locController;
   String _typeSelected = '';
-  DatabaseReference _ref;
+  DatabaseReference _ref,_reff;
   @override
   void initState() {
     super.initState();
@@ -22,6 +25,7 @@ class _UploadState extends State<Upload> {
     _desController = TextEditingController();
     _locController = TextEditingController();
     _ref = FirebaseDatabase.instance.reference().child('Posts');
+    _reff = FirebaseDatabase.instance.reference().child('rPosts');
   }
 
   Widget _buildContactType(String title) {
@@ -30,7 +34,8 @@ class _UploadState extends State<Upload> {
         height: 40,
         width: 150,
         decoration: BoxDecoration(
-          color: _typeSelected == title ? Colors.orange[900] : Colors.orange[300],
+          color:
+              _typeSelected == title ? Colors.orange[900] : Colors.orange[300],
           borderRadius: BorderRadius.circular(15),
         ),
         child: Center(
@@ -218,17 +223,29 @@ class _UploadState extends State<Upload> {
     String description = _desController.text;
     String location = _locController.text;
 
-    Map<String, String> contact = {
-      'name': name,
-      'number': number,
-      'location':location,
-      'description': description,
-
-      'type': _typeSelected,
+    if (_typeSelected == 'Donation') {
+      Map<String, String> contact = {
+        'name': name,
+        'number': number,
+        'location': location,
+        'description': description,
+        'type': _typeSelected,
+      };
+      _ref.push().set(contact).then((value) {
+        Navigator.pop(context);
+      });
     };
-
-    _ref.push().set(contact).then((value) {
-      Navigator.pop(context);
-    });
+    if (_typeSelected == 'Request') {
+      Map<String, String> contacts = {
+        'name': name,
+        'number': number,
+        'location': location,
+        'description': description,
+        'type': _typeSelected,
+      };
+      _reff.push().set(contacts).then((value) {
+        Navigator.pop(context);
+      });
+    };
   }
 }

@@ -5,26 +5,25 @@ import 'package:zero_hunger/services/auth.dart';
 import 'package:zero_hunger/helper/authenticate.dart';
 import 'package:zero_hunger/views/edit_feed.dart';
 import 'package:zero_hunger/views/upload.dart';
-import 'package:zero_hunger/views/request_feed.dart';
 import 'package:zero_hunger/widgets/widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DisplayFeed extends StatefulWidget {
+class DisplayRequestFeed extends StatefulWidget {
   @override
-  _DisplayFeedState createState() => _DisplayFeedState();
+  _DisplayRequestFeedState createState() => _DisplayRequestFeedState();
 }
 
-class _DisplayFeedState extends State<DisplayFeed> {
+class _DisplayRequestFeedState extends State<DisplayRequestFeed> {
   AuthMethods authMethods = new AuthMethods();
 
   Query _ref;
   DatabaseReference reference =
-      FirebaseDatabase.instance.reference().child('Posts');
+      FirebaseDatabase.instance.reference().child('rPosts');
 
   @override
   void initState() {
     super.initState();
-    _ref = FirebaseDatabase.instance.reference().child('Posts');
+    _ref = FirebaseDatabase.instance.reference().child('rPosts');
   }
 
   Widget _buildContactItem({Map contact}) {
@@ -333,7 +332,7 @@ class _DisplayFeedState extends State<DisplayFeed> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => DisplayRequestFeed()));
+              context, MaterialPageRoute(builder: (context) => Upload()));
         },
         label: Text('Upload'),
         
