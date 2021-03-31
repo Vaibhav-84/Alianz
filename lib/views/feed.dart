@@ -5,6 +5,8 @@ import 'package:zero_hunger/services/auth.dart';
 import 'package:zero_hunger/helper/authenticate.dart';
 import 'package:zero_hunger/views/edit_feed.dart';
 import 'package:zero_hunger/views/upload.dart';
+import 'package:zero_hunger/widgets/widget.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DisplayFeed extends StatefulWidget {
   @override
@@ -27,104 +29,147 @@ class _DisplayFeedState extends State<DisplayFeed> {
   Widget _buildContactItem({Map contact}) {
     Color typeColor = getTypeColor(contact['type']);
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.all(10),
-      height: 200,
-      color: Colors.white,
+       decoration: BoxDecoration(
+         boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey[500],
+                      offset: const Offset(
+                        5.0,
+                        5.0,
+                      ),
+                      blurRadius: 10.0,
+                      spreadRadius: 2.0,
+                    ), //BoxShadow
+                    BoxShadow(
+                      color: Colors.white,
+                      offset: const Offset(0.0, 0.0),
+                      blurRadius: 0.0,
+                      spreadRadius: 0.0,
+                    ), //BoxShadow
+                  ],
+       ),
+      margin: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+      // padding: EdgeInsets.all(10),
+      // height: 230,
+      // color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Icon(
-                Icons.account_circle,
-                color: Theme.of(context).primaryColor,
-                size: 30,
+          ColoredBox(
+            color: Colors.orange[100],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 5),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.account_circle,
+                    color: Colors.orange,
+                    size: 30,
+                  ),
+                  SizedBox(
+                    width: 6,
+                  ),
+                  Text(
+                    contact['name'],
+                     
+                    style:  GoogleFonts.openSans(
+                      textStyle: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w600,
+                    ),),
+                  ),
+                
+                ],
               ),
-              SizedBox(
-                width: 6,
-              ),
-              Text(
-                contact['name'],
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
+            ),
           ),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Flexible(
+              child: Row(
+                
+                children: [
+                 Text('Description: ',
+                 style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.pink[200],
+                      fontWeight: FontWeight.w600,
+                    ),
+                 ),
+                  // SizedBox(
+                  //   width: 6,
+                  // ),
+                ],
+              ),
+            ),
+          ),
+           Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: Row(
+                  children: [
+                    Flexible(
+                      child: Text(
+                        contact['description'],
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.grey[600],
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+           ),
+      
           SizedBox(
             height: 30,
           ),
-          Flexible(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               children: [
-               Text('Description: ',
-               style: TextStyle(
-                    fontSize: 20,
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w600,
-                  ),
-               ),
+                Icon(
+                  Icons.phone_iphone,
+                  color: Colors.red[300],
+                  size: 25,
+                ),
                 SizedBox(
                   width: 6,
                 ),
-                Flexible(
-                  child: Text(
-                    contact['description'],
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.purple,
-                      fontWeight: FontWeight.w400,
-                    ),
+                Text(
+                  contact['number'],
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                Icon(
+                  Icons.group_work,
+                  color: typeColor,
+                  size: 25,
+                ),
+                SizedBox(
+                  width: 6,
+                ),
+                Text(
+                  contact['type'],
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: typeColor,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
             ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Row(
-            children: [
-              Icon(
-                Icons.phone_iphone,
-                color: Colors.red,
-                size: 25,
-              ),
-              SizedBox(
-                width: 6,
-              ),
-              Text(
-                contact['number'],
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.red,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              Icon(
-                Icons.group_work,
-                color: typeColor,
-                size: 25,
-              ),
-              SizedBox(
-                width: 6,
-              ),
-              Text(
-                contact['type'],
-                style: TextStyle(
-                  fontSize: 16,
-                  color: typeColor,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
           ),
           SizedBox(
             height: 15,
@@ -228,6 +273,7 @@ class _DisplayFeedState extends State<DisplayFeed> {
           "assets/images/logo.png",
           height: 50,
         ),
+        backgroundColor: Colors.orange[600],
         actions: [
           GestureDetector(
             onTap: () {
@@ -241,7 +287,6 @@ class _DisplayFeedState extends State<DisplayFeed> {
             ),
           )
         ],
-        backgroundColor: Colors.red[500],
       ),
       body: Container(
         height: double.infinity,
@@ -263,7 +308,7 @@ class _DisplayFeedState extends State<DisplayFeed> {
         label: Text('Upload'),
         
         icon: Icon(Icons.file_upload),
-        backgroundColor: Colors.red[500],
+        backgroundColor: Colors.orange[500],
       ),
     );
   }
@@ -272,7 +317,7 @@ class _DisplayFeedState extends State<DisplayFeed> {
     Color color = Theme.of(context).accentColor;
 
     if (type == 'Donation') {
-      color = Colors.red;
+      color = Colors.green;
     }
     if (type == 'Request') {
       color = Colors.orange;

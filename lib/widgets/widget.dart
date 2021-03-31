@@ -4,10 +4,11 @@ Widget appBarMain(BuildContext context) {
   return AppBar(
     title: Image.asset(
       "assets/images/logo.png",
-      height: 50,
+      height: 20,
+      scale: 0.5,
+      //  mainAxisAlignment: MainAxisAlignment.start,
     ),
-    backgroundColor: Colors.red[500],
-
+    backgroundColor: Colors.orange[600],
   );
 }
 
@@ -30,6 +31,5 @@ TextStyle mediumTextStyle() {
   return TextStyle(
     fontSize: 17,
     color: Colors.white,
-
   );
 }

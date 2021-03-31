@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:zero_hunger/widgets/widget.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Upload extends StatefulWidget {
   @override
@@ -8,7 +11,7 @@ class Upload extends StatefulWidget {
 }
 
 class _UploadState extends State<Upload> {
-  TextEditingController _nameController, _numberController,_desController;
+  TextEditingController _nameController, _numberController, _desController;
   String _typeSelected = '';
   DatabaseReference _ref;
   @override
@@ -26,7 +29,7 @@ class _UploadState extends State<Upload> {
         height: 40,
         width: 150,
         decoration: BoxDecoration(
-          color: _typeSelected == title ? Colors.green : Colors.red,
+          color: _typeSelected == title ? Colors.pink[300] : Colors.orange[300],
           borderRadius: BorderRadius.circular(15),
         ),
         child: Center(
@@ -49,7 +52,7 @@ class _UploadState extends State<Upload> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Upload Post'),
-          backgroundColor: Colors.red[500],
+          backgroundColor: Colors.orange,
         ),
         body: Container(
           margin: EdgeInsets.all(15),
@@ -57,50 +60,64 @@ class _UploadState extends State<Upload> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
-                  controller: _nameController,
-                  decoration: InputDecoration(
-                    hintText: 'Enter Name',
-                    prefixIcon: Icon(
-                      Icons.account_circle,
-                      size: 30,
-                    ),
-                    fillColor: Colors.white,
-                    filled: true,
-                    contentPadding: EdgeInsets.all(15),
-                    border: OutlineInputBorder(),
+                controller: _nameController,
+                decoration: InputDecoration(
+                  hintText: 'Enter Name',
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.orange),
                   ),
+                  prefixIcon: Icon(
+                    Icons.account_circle,
+                    size: 30,
+                    color: Colors.orange,
                   ),
+                  fillColor: Colors.white,
+                  filled: true,
+                  contentPadding: EdgeInsets.all(15),
+                  border: OutlineInputBorder(),
+                ),
+              ),
               SizedBox(height: 15),
               TextFormField(
-                  controller: _numberController,
-                  decoration: InputDecoration(
-                    hintText: 'Enter Number',
-                    prefixIcon: Icon(
-                      Icons.phone_android,
-                      size: 30,
-                    ),
-                    fillColor: Colors.white,
-                    filled: true,
-                    contentPadding: EdgeInsets.all(15),
-                    border: OutlineInputBorder(),
+                controller: _numberController,
+                decoration: InputDecoration(
+                  hintText: 'Enter Number',
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.orange),
                   ),
-                  keyboardType: TextInputType.number,
+                  prefixIcon: Icon(
+                    Icons.phone_android,
+                    size: 30,
+                    color: Colors.orange,
                   ),
+                  fillColor: Colors.white,
+                  filled: true,
+                  contentPadding: EdgeInsets.all(15),
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.number,
+              ),
               SizedBox(
                 height: 15,
               ),
               TextFormField(
-                  controller: _desController,
-                  decoration: InputDecoration(
-                    hintText: 'Detailed Description',
-                    labelText: "Description",
-                    fillColor: Colors.white,
-                    filled: true,
-                    contentPadding: EdgeInsets.all(15),
-                    border: OutlineInputBorder(),
+                controller: _desController,
+                decoration: InputDecoration(
+                  hintText: 'Detailed Description',
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.orange),
                   ),
-                  maxLines: 3,
+                  labelText: "Description",
+                  labelStyle: TextStyle(
+                    color: Colors.orange,
                   ),
+                  fillColor: Colors.white,
+                  filled: true,
+                  contentPadding: EdgeInsets.all(15),
+                  border: OutlineInputBorder(),
+                ),
+                maxLines: 3,
+              ),
               SizedBox(
                 height: 15,
               ),
@@ -120,7 +137,9 @@ class _UploadState extends State<Upload> {
                   ],
                 ),
               ),
-              SizedBox(height: 25,),
+              SizedBox(
+                height: 25,
+              ),
               // Container(
               //   width: double.infinity,
               //   padding: EdgeInsets.symmetric(horizontal: 10),
@@ -140,24 +159,30 @@ class _UploadState extends State<Upload> {
               //   ),
               // )
 
-               GestureDetector(
-                        onTap: () {
-                          saveContact();
-                        },
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: MediaQuery.of(context).size.width,
-                          padding: EdgeInsets.symmetric(vertical: 20),
-                          decoration: BoxDecoration(
-                            color: Colors.red[500],
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Text(
-                            "Post",
-                            style: mediumTextStyle(),
-                          ),
-                        ),
+              GestureDetector(
+                onTap: () {
+                  saveContact();
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.orange[500],
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Text(
+                    "Post",
+                    style: GoogleFonts.barlow(
+                      textStyle: TextStyle(
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
                       ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ));
@@ -175,7 +200,7 @@ class _UploadState extends State<Upload> {
       'type': _typeSelected,
     };
 
-    _ref.push().set(contact).then((value){
+    _ref.push().set(contact).then((value) {
       Navigator.pop(context);
     });
   }

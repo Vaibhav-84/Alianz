@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zero_hunger">
    <application
-        android:label="zero_hunger"
+        android:label="alianz"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

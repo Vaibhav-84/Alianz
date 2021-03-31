@@ -137,7 +137,7 @@ class _SignInState extends State<SignIn> {
                           width: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.symmetric(vertical: 20),
                           decoration: BoxDecoration(
-                            color: Colors.red[500],
+                            color: Colors.orange[600],
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Text(
