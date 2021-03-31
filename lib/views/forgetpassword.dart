@@ -14,7 +14,7 @@ class _ResetPassState extends State<ResetPass> {
   Widget build(BuildContext context) {
     return Scaffold(  
       appBar: AppBar(title: Text('Reset Password'),
-      backgroundColor: Colors.red[500],),
+      backgroundColor: Colors.orange,),
       body: Column(
         children: [
           Padding(
@@ -41,7 +41,7 @@ class _ResetPassState extends State<ResetPass> {
                   auth.sendPasswordResetEmail(email: _email);
                   Navigator.of(context).pop();
                 },
-                color: Colors.red[500],
+                color: Colors.orange,
               ),
 
             ],

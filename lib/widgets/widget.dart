@@ -6,6 +6,7 @@ Widget appBarMain(BuildContext context) {
       "assets/images/logo.png",
       height: 20,
       scale: 0.5,
+      
       //  mainAxisAlignment: MainAxisAlignment.start,
     ),
     backgroundColor: Colors.orange[600],

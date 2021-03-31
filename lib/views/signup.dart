@@ -56,7 +56,10 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarMain(context),
+      appBar: AppBar(
+          title: Text('Sign Up'),
+          backgroundColor: Colors.orange,
+        ),
       body: isLoading
           ? Container(child: Center(child: CircularProgressIndicator()))
           : SingleChildScrollView(
@@ -139,12 +142,13 @@ class _SignUpState extends State<SignUp> {
                           width: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.symmetric(vertical: 20),
                           decoration: BoxDecoration(
-                            color: Colors.red[500],
+                            color: Colors.orange[500],
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Text(
                             "Sign Up",
-                            style: mediumTextStyle(),
+                            style: TextStyle(
+                            ),
                           ),
                         ),
                       ),
