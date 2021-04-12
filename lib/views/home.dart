@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:zero_hunger/helper/authenticate.dart';
 import 'package:zero_hunger/services/auth.dart';
 import 'package:zero_hunger/views/feed.dart';
+import 'package:zero_hunger/views/request_feed.dart';
+import 'package:zero_hunger/views/upload.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,38 +12,59 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   AuthMethods authMethods = new AuthMethods();
+
+  int _cIndex = 0;
+
+final List<Widget> _children = [
+    DisplayFeed(),
+    DisplayRequestFeed(),
+    
+  ];
+
+  void _incrementTab(index) {
+    setState(() {
+      _cIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Image.asset(
-          "assets/images/logo.png",
-          height: 50,
-        ),
-        actions: [
-          GestureDetector(
-            onTap: () {
-              authMethods.signOut();
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => Authenticate()));
-            },
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Icon(Icons.exit_to_app),
-            ),
+     
+      body: _children[_cIndex],
+
+
+
+
+
+
+
+      
+       bottomNavigationBar:BottomNavigationBar(
+        currentIndex: _cIndex,
+        type: BottomNavigationBarType.shifting ,
+        items: const<BottomNavigationBarItem>[
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.hail,
+            color: Colors.orange),
+            title: Text('Donations',
+             style: TextStyle(color: Colors.grey),))
+          ,
+          
+          BottomNavigationBarItem(
+            icon: Icon(Icons.request_page,
+            color: Colors.orange),
+            title:  Text('Requests',
+            style: TextStyle(color: Colors.grey),)
           )
         ],
+        
+        onTap: (index){
+            _incrementTab(index);
+        },
+        backgroundColor: Colors.grey[200],
       ),
-      body: Center(
-        child: const Text('This is Home Screen. Press the button below!'),
-      ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => DisplayFeed()));
-          },
-          child: Icon(Icons.navigation),
-          backgroundColor: Colors.blue),
+      
     );
   }
 }

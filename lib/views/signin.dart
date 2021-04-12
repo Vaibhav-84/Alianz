@@ -4,6 +4,7 @@ import 'package:zero_hunger/helper/helperfunctions.dart';
 import 'package:zero_hunger/services/auth.dart';
 import 'package:zero_hunger/services/database.dart';
 import 'package:zero_hunger/views/feed.dart';
+import 'package:zero_hunger/views/home.dart';
 import 'package:zero_hunger/views/forgetpassword.dart';
 import 'package:zero_hunger/widgets/widget.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -54,7 +55,7 @@ class _SignInState extends State<SignIn> {
           HelperFunctions.saveUserLoggedInSharedPreference(true);
 
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => DisplayFeed()));
+              context, MaterialPageRoute(builder: (context) => Home()));
         }
       });
     }

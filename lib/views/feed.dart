@@ -295,15 +295,13 @@ class _DisplayFeedState extends State<DisplayFeed> {
   //       });
   // }
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          "assets/images/logo.png",
-          height: 50,
-        ),
-        backgroundColor: Colors.orange[600],
+        title: Text('Donations'),
+          backgroundColor: Colors.orange,
         actions: [
           GestureDetector(
             onTap: () {
@@ -330,17 +328,20 @@ class _DisplayFeedState extends State<DisplayFeed> {
           },
         ),
       ),
+      
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => DisplayRequestFeed()));
+              context, MaterialPageRoute(builder: (context) => Upload()));
         },
         label: Text('Upload'),
         
         icon: Icon(Icons.file_upload),
         backgroundColor: Colors.orange[500],
       ),
+      
     );
+    
   }
 
   Color getTypeColor(String type) {

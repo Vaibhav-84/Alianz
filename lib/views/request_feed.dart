@@ -298,10 +298,7 @@ class _DisplayRequestFeedState extends State<DisplayRequestFeed> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          "assets/images/logo.png",
-          height: 50,
-        ),
+        title: Text('Request'),
         backgroundColor: Colors.orange[600],
         actions: [
           GestureDetector(
